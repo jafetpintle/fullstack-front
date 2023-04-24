@@ -1,6 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function AddUser() {
+    const [user, setUser]=useState({
+        name:"",
+        username:"",
+        email:""
+    })
+
+    const{name, username, email}=user
+
+    const onImputChange=(e)=>{
+        setUser({...user, [e.target.name]:e.target.value})
+    }
+
   return (
     <div className='container'>
         <div className='row'>
@@ -14,7 +26,10 @@ export default function AddUser() {
                         type={'text'}
                         className='form-control'
                         placeholder='Enter your name'
-                        name='name'/>
+                        name='name'
+                        value={name}
+                        onChange={(e)=>onImputChange(e)}
+                        />
                 </div>
                 <div className='mb-3'>
                     <label htmlFor='Username' className='form-label'>
@@ -24,7 +39,10 @@ export default function AddUser() {
                         type={'text'}
                         className='form-control'
                         placeholder='Enter your username'
-                        name='username'/>
+                        name='username'
+                        value={username}
+                        onChange={(e)=>onImputChange(e)}
+                        />
                 </div>
                 <div className='mb-3'>
                     <label htmlFor='Email' className='form-label'>
@@ -34,7 +52,10 @@ export default function AddUser() {
                         type={'text'}
                         className='form-control'
                         placeholder='Enter your email'
-                        name='email'/>
+                        name='email'
+                        value={email}
+                        onChange={(e)=>onImputChange(e)}
+                        />
                 </div>
                 <button type='submit' className='btn btn-outline-primary'>Submit</button>
                 <button type='submit' className='btn btn-outline-danger mx-2'>Cancel</button>
